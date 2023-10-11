@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-The code you shared is a Flutter application that creates a form with an email input field, a password input field, and a submit button.
+This a Flutter application that creates a form with an email input field, a password input field, and a submit button.
 
 The form is wrapped inside a Form widget, which is identified by the \_signInkey global key. The text entered into the email and password input fields is controlled by the \_emailcontroller and \_passwordcontroller text editing controllers, respectively.
 
