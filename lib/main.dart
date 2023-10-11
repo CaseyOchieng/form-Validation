@@ -39,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   // This key is used to uniquely identify the Form widget
   final GlobalKey<FormState> _signInkey = GlobalKey<FormState>();
   // This key is used to uniquely identify the Form widget
+  final RegExp emailValid = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
               TextFormField(
                 controller: _emailcontroller,
                 decoration: const InputDecoration(hintText: "Email"),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter some text";
+                  } else if (!emailValid.hasMatch(value)) {
+                    return "Please enter a valid email";
+                  } else {
+                    return null;
+
+                  }
+                },
               ),
               TextFormField(
                 controller: _passwordcontroller,
@@ -83,3 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
+ // Code Explanation
+// The code is trying to import a package called "flutter". The code is using the keyword const to declare a variable that will be used in this class. The value of the variable is "MyApp" and it's being declared with the keyword super. The code is calling a function called runApp, which takes one parameter: an instance of MyApp. This function calls another function called const MyApp(). This widget is the root of your application.
+// The code is a snippet of code that will be compiled into the following DLL: .text:00000134 .text:00000134 .text:00000134 .text:00000134 void MyApp::build(BuildContext context) { }
+// The code in the createState() method creates a new state that extends State<MyHomePage> called _MyHomePageState. The code in this class has two TextEditingController objects, one for email and one for password.
+// The code is the implementation of a state machine that will be used to manage the data flow for MyHomePage. The createState() method creates an instance of State<MyHomePage> and initializes it with an empty constructor. The _MyHomePageState class extends State<MyHomePage> and has two TextEditingController instances, _emailcontroller and _passwordcontroller.
+// The code starts by defining a key called _signInkey that is used to uniquely identify the Form widget. The code then defines a RegExp object called emailValid, which is used to validate an email address. Next, the build method of the Widget class creates a Scaffold with two children: one for displaying text and another for displaying an input field. The first child displays "Sign in" while the second child displays an input field where users can enter their email address. Finally, when this form is submitted, it will send its state information to our server using AJAX requests so we can process it there.
+// The code is used to uniquely identify the Form widget. The code is used to uniquely identify the Form widget.
