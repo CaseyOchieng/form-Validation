@@ -52,10 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // This key is used to uniquely identify the Form widget
           key: _signInkey,
           // This key is used to uniquely identify the Form widget
-
           child: Column(
             children: <Widget>[
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 controller: _emailcontroller,
                 decoration: const InputDecoration(hintText: "Email"),
                 validator: (value) {
@@ -65,11 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     return "Please enter a valid email";
                   } else {
                     return null;
-
                   }
                 },
               ),
               TextFormField(
+                keyboardType: TextInputType.visiblePassword,
                 controller: _passwordcontroller,
                 obscureText: true,
                 decoration: const InputDecoration(hintText: "password"),
