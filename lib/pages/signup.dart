@@ -1,8 +1,6 @@
 // ignore_for_file: unused_field, duplicate_ignore
 
-import 'package:casey/pages/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,22 +18,22 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SignUp(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
 // ignore: duplicate_ignore
-class _MyHomePageState extends State<MyHomePage> {
+class _SignUpState extends State<SignUp> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
   // This key is used to uniquely identify the Form widget
@@ -54,20 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           // Image.asset("assets/logo.svg"),
-          const FaIcon(
-            FontAwesomeIcons.cross,
-            size: 70,
-          ),
           const Text(
-            "Login to Ark Youth Church",
+            "Sign up to Ark Youth Church",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           Container(
             margin: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.circular(30),
-            ),
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30)),
             child: TextFormField(
               keyboardType: TextInputType.emailAddress,
               controller: _emailcontroller,
@@ -90,17 +83,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.all(150),
             decoration: BoxDecoration(
-              color: const Color.fromARGB(80, 238, 238, 238),
-              borderRadius: BorderRadius.circular(30),
-            ),
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30)),
             child: TextFormField(
               keyboardType: TextInputType.visiblePassword,
               controller: _passwordcontroller,
               obscureText: true,
               decoration: const InputDecoration(
-                  hintText: "Password",
+                  hintText: "password",
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(
                     vertical: 15,
@@ -124,7 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               width: 250,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: TextButton(
                   onPressed: () {
                     if (_signInkey.currentState!.validate()) {
@@ -132,23 +126,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       debugPrint("Password: ${_passwordcontroller.text}");
                     }
                   },
-                  child: const Text(
-                    "Submit",
-                    style: TextStyle(color: Colors.white),
-                  )),
+                  child: const Text("Sign Up")),
             ),
           ),
           TextButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SignUp(
-                      title: 'Flutter Demo Home Page',
-                    ),
-                  ),
-                );
+                Navigator.of(context).pop();
               },
-              child: const Text("You don't have an account"))
+              child: const Text("You have an account"))
         ],
       ),
     ));
@@ -157,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
  // Code Explanation
 // The code is trying to import a package called "flutter". The code is using the keyword const to declare a variable that will be used in this class. The value of the variable is "MyApp" and it's being declared with the keyword super. The code is calling a function called runApp, which takes one parameter: an instance of MyApp. This function calls another function called const MyApp(). This widget is the root of your application.
 // The code is a snippet of code that will be compiled into the following DLL: .text:00000134 .text:00000134 .text:00000134 .text:00000134 void MyApp::build(BuildContext context) { }
-// The code in the createState() method creates a new state that extends State<MyHomePage> called _MyHomePageState. The code in this class has two TextEditingController objects, one for email and one for password.
-// The code is the implementation of a state machine that will be used to manage the data flow for MyHomePage. The createState() method creates an instance of State<MyHomePage> and initializes it with an empty constructor. The _MyHomePageState class extends State<MyHomePage> and has two TextEditingController instances, _emailcontroller and _passwordcontroller.
+// The code in the createState() method creates a new state that extends State<SignUp> called _SignUpState. The code in this class has two TextEditingController objects, one for email and one for password.
+// The code is the implementation of a state machine that will be used to manage the data flow for SignUp. The createState() method creates an instance of State<SignUp> and initializes it with an empty constructor. The _MyHomePageState class extends State<SignUp> and has two TextEditingController instances, _emailcontroller and _passwordcontroller.
 // The code starts by defining a key called _signInkey that is used to uniquely identify the Form widget. The code then defines a RegExp object called emailValid, which is used to validate an email address. Next, the build method of the Widget class creates a Scaffold with two children: one for displaying text and another for displaying an input field. The first child displays "Sign in" while the second child displays an input field where users can enter their email address. Finally, when this form is submitted, it will send its state information to our server using AJAX requests so we can process it there.
 // The code is used to uniquely identify the Form widget. The code is used to uniquely identify the Form widget.
