@@ -44,55 +44,71 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
-        ),
         body: Form(
-          // This key is used to uniquely identify the Form widget
-          key: _signInkey,
-          // This key is used to uniquely identify the Form widget
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                controller: _emailcontroller,
-                decoration: const InputDecoration(hintText: "Email"),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter some text";
-                  } else if (!emailValid.hasMatch(value)) {
-                    return "Please enter a valid email";
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                controller: _passwordcontroller,
-                obscureText: true,
-                decoration: const InputDecoration(hintText: "password"),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter some text";
-                  } else if (value.length < 6) {
-                    return "Password must be at least 6 characters";
-                  }
-                  return null;
-                },
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    if (_signInkey.currentState!.validate()) {
-                      debugPrint("Email: ${_emailcontroller.text}");
-                      debugPrint("Password: ${_passwordcontroller.text}");
-                    }
-                  },
-                  child: const Text("Submit")),
-            ],
+      // This key is used to uniquely identify the Form widget
+      key: _signInkey,
+      // This key is used to uniquely identify the Form widget
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text(
+            "Login to Ark Youth Church",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-        ));
+          Container(
+            margin: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+            decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30)),
+            child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              controller: _emailcontroller,
+              decoration: const InputDecoration(hintText: "Email"),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter some text";
+                } else if (!emailValid.hasMatch(value)) {
+                  return "Please enter a valid email";
+                } else {
+                  return null;
+                }
+              },
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+            decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30)),
+            child: TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              controller: _passwordcontroller,
+              obscureText: true,
+              decoration: const InputDecoration(hintText: "password"),
+//----------------------------------------
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter some text";
+                } else if (value.length < 6) {
+                  return "Password must be at least 6 characters";
+                }
+                return null;
+              },
+            ),
+            //The first function, validatePassword, takes a string as an argument and returns either null or the message "Please enter some text".
+//---------------------------------------
+          ),
+          ElevatedButton(
+              onPressed: () {
+                if (_signInkey.currentState!.validate()) {
+                  debugPrint("Email: ${_emailcontroller.text}");
+                  debugPrint("Password: ${_passwordcontroller.text}");
+                }
+              },
+              child: const Text("Submit")),
+        ],
+      ),
+    ));
   }
 }
  // Code Explanation
